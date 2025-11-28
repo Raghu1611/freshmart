@@ -27,10 +27,9 @@ Edit `backend/.env`:
 
 ```env
 PORT=5000
-MONGODB_URI=mongodb+srv://your_username:your_password@cluster.mongodb.net/auth-system?retryWrites=true&w=majority
+MONGODB_URI= //add you mongo atlas uri
 JWT_SECRET=your_random_secret_key_here_make_it_long
-VERIFY_API_KEY=vedjsjssdjkjjnsddjsksdbssdflsfmbjm
-EMAIL_API_URL=https://mailservice-nine.vercel.app/api/send
+
 FRONTEND_URL=http://localhost:5173
 ```
 
@@ -42,12 +41,12 @@ Dependencies are being installed automatically. Wait for the installation to com
 
 **Terminal 1 - Backend:**
 ```bash
-./start-backend.bat
+npm run dev
 ```
 
 **Terminal 2 - Frontend:**
 ```bash
-./start-frontend.bat
+npm run dev
 ```
 
 ## User Flow
