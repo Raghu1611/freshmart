@@ -82,12 +82,13 @@ Create a `.env` file in the `backend` folder:
 PORT=5000
 MONGODB_URI=your_mongodb_connection_string
 JWT_SECRET=your_super_secret_key
+FRONTEND_URL=http://localhost:5173
 STRIPE_SECRET_KEY=your_stripe_key (optional)
 ```
 
 Start the backend server:
 ```bash
-npm start
+npm run dev
 ```
 
 ### 3. Frontend Setup
