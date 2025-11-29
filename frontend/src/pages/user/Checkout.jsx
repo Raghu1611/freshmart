@@ -125,7 +125,7 @@ const Checkout = () => {
                 totalAmount: calculateTotal()
             };
 
-            await axios.post('http://localhost:5000/api/orders', orderData, {
+            await axios.post(`${API_URL}/orders`, orderData, {
                 headers: { Authorization: `Bearer ${token}` }
             });
 
@@ -145,7 +145,7 @@ const Checkout = () => {
             const token = localStorage.getItem('token');
             toast.loading('Initiating payment...', { id: 'payment-init' });
 
-            const orderResponse = await axios.post('http://localhost:5000/api/orders/create-payment', {
+            const orderResponse = await axios.post(`${API_URL}/orders/create-payment`, {
                 items: cartItems.map(item => ({
                     product: item._id,
                     quantity: item.quantity,

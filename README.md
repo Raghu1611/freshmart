@@ -1,164 +1,130 @@
-# Authentication System with Email Verification
+# FreshMart - Premium Online Grocery Store
 
-A complete authentication system built with React (Vite), Node.js, Express, MongoDB, and Tailwind CSS.
+<div align="center">
+  <img src="frontend/public/logo.png" alt="FreshMart Logo" width="120" />
+  <h1>FreshMart</h1>
+  <p><strong>Premium Daily Essentials Delivered to Your Doorstep</strong></p>
+</div>
 
-## Features
+FreshMart is a full-stack MERN application designed to provide a seamless and premium online grocery shopping experience. It features a modern, responsive UI, robust backend management, and a secure authentication system.
 
-✅ **Email-based Registration** - Users register with email and receive a verification link
-✅ **Email Verification** - Users must verify their email before setting a password
-✅ **Secure Login** - JWT-based authentication
-✅ **Forgot Password** - OTP-based password reset via email
-✅ **Beautiful UI** - Modern, responsive design with Tailwind CSS
-✅ **Protected Routes** - Dashboard accessible only to authenticated users
+## 🌟 Unique Features
 
-## Setup Instructions
+### 🎨 **Premium UI/UX**
+- **Modern Aesthetic:** Clean, white-space driven design with a vibrant green color palette.
+- **Dark Mode Support:** Fully integrated system-wide dark mode for a comfortable viewing experience at night.
+- **Responsive Design:** Optimized for all screen sizes, from mobile phones to large desktop monitors.
+- **Smooth Animations:** Powered by `framer-motion` for engaging page transitions and micro-interactions.
 
-### 1. Configure MongoDB Atlas
+### 🛍️ **Smart Shopping Experience**
+- **Dynamic Dashboard:** Personalized user hub showing recent orders, total spent, and recently viewed products.
+- **Advanced Filtering:** Browse products by categories (Vegetables, Fruits, Dairy, etc.) with instant filtering.
+- **Real-time Search:** Find products instantly with a responsive search bar.
+- **Cart Management:** Fully functional cart with quantity adjustments and live total calculation.
 
-1. Go to [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
-2. Create a cluster (or use existing one)
-3. Click "Connect" → "Connect your application"
-4. Copy your connection string
-5. Update `backend/.env` with your MongoDB URI
+### 📦 **Order Management**
+- **Order History:** comprehensive list of all past orders with detailed breakdowns.
+- **Live Status Tracking:** Track orders through 5 stages: `Pending` → `Confirmed` → `Processing` → `Shipped` → `Delivered`.
+- **Order Cancellation:** Users can cancel orders before they are processed.
+- **Reorder Functionality:** Quickly re-add items from a past order to the cart with one click.
 
-### 2. Update Environment Variables
+### 🛡️ **Admin Dashboard**
+- **Visual Analytics:** At-a-glance view of Total Sales, Total Orders, and User Count.
+- **Product Management:** Add, edit, and delete products with support for multiple images per product.
+- **Order Control:** View all customer orders and update their status to keep users informed.
+- **User Management:** Monitor registered users and their roles.
 
-Edit `backend/.env`:
+### 💳 **Secure Checkout**
+- **Multiple Payment Options:** Support for both **Cash on Delivery (COD)** and **Online Payments** (Razorpay integration).
+- **Address Management:** Save and manage shipping addresses for faster checkout.
+- **Order Summary:** Clear breakdown of subtotal, shipping fees, and taxes before purchase.
 
+---
+
+## 🚀 Tech Stack
+
+### **Frontend**
+- **Framework:** React 18 (Vite)
+- **Styling:** Tailwind CSS
+- **State Management:** React Context API
+- **Routing:** React Router DOM v6
+- **Animations:** Framer Motion
+- **Icons:** Lucide React
+- **HTTP Client:** Axios
+
+### **Backend**
+- **Runtime:** Node.js
+- **Framework:** Express.js
+- **Database:** MongoDB (Mongoose ODM)
+- **Authentication:** JWT (JSON Web Tokens)
+- **Password Hashing:** Bcrypt.js
+- **Image Storage:** Cloudinary (optional configuration)
+
+---
+
+## 🛠️ Installation & Setup
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/Raghu1611/freshmart.git
+cd freshmart
+```
+
+### 2. Backend Setup
+Navigate to the backend directory and install dependencies:
+```bash
+cd backend
+npm install
+```
+
+Create a `.env` file in the `backend` folder:
 ```env
 PORT=5000
-MONGODB_URI=mongodb+srv://your_username:your_password@cluster.mongodb.net/auth-system?retryWrites=true&w=majority
-JWT_SECRET=your_random_secret_key_here_make_it_long
-VERIFY_API_KEY=vedjsjssdjkjjnsddjsksdbssdflsfmbjm
-EMAIL_API_URL=https://mailservice-nine.vercel.app/api/send
-FRONTEND_URL=http://localhost:5173
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_super_secret_key
+STRIPE_SECRET_KEY=your_stripe_key (optional)
 ```
 
-### 3. Install Dependencies
-
-Dependencies are being installed automatically. Wait for the installation to complete.
-
-### 4. Start the Application
-
-**Terminal 1 - Backend:**
+Start the backend server:
 ```bash
-./start-backend.bat
+npm start
 ```
 
-**Terminal 2 - Frontend:**
+### 3. Frontend Setup
+Open a new terminal, navigate to the frontend directory, and install dependencies:
 ```bash
-./start-frontend.bat
+cd frontend
+npm install
 ```
 
-## User Flow
-
-### Registration Flow
-1. User enters email on `/register`
-2. System sends verification email with a link
-3. User clicks the link (opens `/verify-email?token=...`)
-4. User sets their password
-5. User is automatically logged in and redirected to dashboard
-
-### Login Flow
-1. User enters email and password on `/login`
-2. System validates credentials
-3. User is redirected to dashboard
-
-### Forgot Password Flow
-1. User clicks "Forgot Password" on login page
-2. User enters email
-3. System sends 6-digit OTP via email
-4. User enters OTP and new password
-5. Password is reset, user can login with new password
-
-## API Endpoints
-
-### Authentication Routes
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/api/auth/register` | Send verification email |
-| POST | `/api/auth/verify-email` | Verify email and set password |
-| POST | `/api/auth/login` | Login with email/password |
-| POST | `/api/auth/forgot-password` | Send password reset OTP |
-| POST | `/api/auth/reset-password` | Reset password with OTP |
-
-## Tech Stack
-
-**Frontend:**
-- React 18
-- Vite
-- React Router DOM
-- Axios
-- Tailwind CSS
-
-**Backend:**
-- Node.js
-- Express
-- MongoDB with Mongoose
-- JWT for authentication
-- Bcrypt for password hashing
-- Axios for email service integration
-
-## Email Service
-
-The application uses a custom email API endpoint for sending emails:
-- Verification emails during registration
-- OTP emails for password reset
-
-Endpoint: `https://mailservice-nine.vercel.app/api/send`
-
-## Security Features
-
-- Passwords hashed with bcrypt (12 salt rounds)
-- JWT tokens for secure authentication
-- Email verification required before account activation
-- Time-limited verification tokens (30 minutes)
-- Time-limited OTP for password reset (15 minutes)
-- Protected routes with authentication middleware
-
-## Project Structure
-
-```
-login/
-├── backend/
-│   ├── controllers/
-│   │   └── authController.js
-│   ├── models/
-│   │   └── User.js
-│   ├── routes/
-│   │   └── authRoutes.js
-│   ├── utils/
-│   │   └── email.js
-│   ├── server.js
-│   ├── package.json
-│   └── .env
-├── src/
-│   ├── pages/
-│   │   ├── Register.jsx
-│   │   ├── VerifyEmail.jsx
-│   │   ├── Login.jsx
-│   │   ├── ForgotPassword.jsx
-│   │   └── Dashboard.jsx
-│   ├── App.jsx
-│   ├── main.jsx
-│   ├── index.css
-│   └── config.js
-├── index.html
-├── package.json
-├── tailwind.config.js
-├── start-backend.bat
-└── start-frontend.bat
+Start the development server:
+```bash
+npm run dev
 ```
 
-## Development
+---
 
-Frontend runs on: `http://localhost:5173`
-Backend runs on: `http://localhost:5000`
+## 🔑 Default Admin Credentials
+To access the Admin Dashboard, use the following credentials (seeded automatically):
+- **Email:** `admin@freshmart.com`
+- **Password:** `admin123`
 
-## Notes
+---
 
-- Make sure MongoDB Atlas allows connections from your IP address
-- Check spam folder if verification emails don't arrive
-- Verification token expires in 30 minutes
-- Password reset OTP expires in 15 minutes
+## 📸 Screenshots
+
+| **Home Page** | **Dark Mode** |
+|:---:|:---:|
+| *Modern & Clean Layout* | *Sleek Dark Theme* |
+
+| **User Dashboard** | **Admin Panel** |
+|:---:|:---:|
+| *Personalized Stats* | *Full Control Center* |
+
+---
+
+## 🤝 Contributing
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📄 License
+This project is licensed under the MIT License.

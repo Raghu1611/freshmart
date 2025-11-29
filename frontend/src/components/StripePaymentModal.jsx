@@ -4,6 +4,8 @@ import { Elements, PaymentElement, useStripe, useElements } from '@stripe/react-
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 
+import { API_URL } from '../config';
+
 const CheckoutForm = ({ orderId, onSuccess, onClose }) => {
     const stripe = useStripe();
     const elements = useElements();
@@ -33,7 +35,7 @@ const CheckoutForm = ({ orderId, onSuccess, onClose }) => {
             } else if (paymentIntent && paymentIntent.status === 'succeeded') {
                 // Verify with backend
                 const token = localStorage.getItem('token');
-                await axios.post('http://localhost:5000/api/orders/verify-payment', {
+                await axios.post(`${API_URL}/orders/verify-payment`, {
                     paymentIntentId: paymentIntent.id,
                     orderId
                 }, {

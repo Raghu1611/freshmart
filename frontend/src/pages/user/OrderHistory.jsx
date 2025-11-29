@@ -33,7 +33,7 @@ const OrderHistory = () => {
                 return;
             }
 
-            const { data } = await axios.get('http://localhost:5000/api/orders/my-orders', {
+            const { data } = await axios.get(`${API_URL}/orders/my-orders`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
 
@@ -74,7 +74,7 @@ const OrderHistory = () => {
                             toast.dismiss(t.id);
                             try {
                                 const token = localStorage.getItem('token');
-                                await axios.put(`http://localhost:5000/api/orders/${orderId}/cancel`, {}, {
+                                await axios.put(`${API_URL}/orders/${orderId}/cancel`, {}, {
                                     headers: { Authorization: `Bearer ${token}` }
                                 });
                                 toast.success('Order cancelled successfully');
