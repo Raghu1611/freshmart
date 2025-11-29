@@ -43,6 +43,11 @@ app.get('/api/health', (req, res) => {
     res.json({ status: 'OK', message: 'Server is running' });
 });
 
+// Root route
+app.get('/', (req, res) => {
+    res.send('API is running...');
+});
+
 // MongoDB Connection
 console.log(`Attempting to connect to MongoDB... URI present: ${!!process.env.MONGODB_URI}`);
 
