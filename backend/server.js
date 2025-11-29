@@ -49,21 +49,16 @@ app.get('/', (req, res) => {
 });
 
 // MongoDB Connection
-console.log(`Attempting to connect to MongoDB... URI present: ${!!process.env.MONGODB_URI}`);
-
 mongoose.connect(process.env.MONGODB_URI)
-    .then(() => {
-        console.log('✅ Connected to MongoDB');
+    .then(() => console.log('✅ Connected to MongoDB'))
+    .catch((error) => console.error(`❌ MongoDB connection error: ${error.message}`));
 
-        // Start server
-        const PORT = process.env.PORT || 5000;
-        app.listen(PORT, () => {
-            console.log(`🚀 Server running on port ${PORT}`);
-        });
-    })
-    .catch((error) => {
-        console.error(`❌ MongoDB connection error: ${error.message}`);
-        process.exit(1);
+// Start server only if running directly (not in Vercel)
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+    const PORT = process.env.PORT || 5000;
+    app.listen(PORT, () => {
+        console.log(`🚀 Server running on port ${PORT}`);
     });
+}
 
 export default app;
