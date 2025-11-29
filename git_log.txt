@@ -1,0 +1,15 @@
+STARTING GIT OPERATIONS 
+ 
+--- GIT STATUS --- 
+On branch main
+Your branch is ahead of 'origin/main' by 5 commits.
+  (use "git push" to publish your local commits)
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	commit_push.bat
+	git_log.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+ 
+--- GIT ADD --- 
