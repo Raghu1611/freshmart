@@ -2,6 +2,10 @@ import axios from 'axios';
 
 export const sendEmail = async ({ to, subject, html }) => {
     try {
+        console.log('Attempting to send email to:', to);
+        console.log('Email API URL present:', !!process.env.EMAIL_API_URL);
+        console.log('Verify API Key present:', !!process.env.VERIFY_API_KEY);
+
         const response = await axios.post(
             process.env.EMAIL_API_URL,
             {
@@ -16,9 +20,13 @@ export const sendEmail = async ({ to, subject, html }) => {
             }
         );
 
+        console.log('Email sent successfully');
         return { success: true, data: response.data };
     } catch (error) {
-        console.error('Email sending error:', error.response?.data || error.message);
+        console.error('Email sending failed details:');
+        console.error('Message:', error.message);
+        console.error('Response data:', error.response?.data);
+        console.error('Status:', error.response?.status);
         return { success: false, error: error.message };
     }
 };
