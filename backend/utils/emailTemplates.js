@@ -315,7 +315,7 @@ export const passwordResetConfirmationTemplate = (userEmail) => {
 
                 <!-- Call to Action -->
                 <div class="button-container">
-                    <a href="${process.env.FRONTEND_URL || 'http://localhost:5173'}/login" class="button">
+                    <a href="${process.env.FRONTEND_URL || 'https://freshmart-frontend-xi.vercel.app'}/login" class="button">
                         Login to Your Account →
                     </a>
                 </div>
