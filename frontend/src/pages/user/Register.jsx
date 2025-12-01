@@ -4,6 +4,7 @@ import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { Mail, Loader2, Leaf, ArrowRight, Info } from 'lucide-react';
 import toast from 'react-hot-toast';
 import axios from 'axios';
+import { API_URL } from '../../config';
 import GroceryAnimation from '../../components/GroceryAnimation';
 
 const Register = () => {
@@ -16,7 +17,7 @@ const Register = () => {
         setLoading(true);
 
         try {
-            await axios.post('/api/auth/register', { email });
+            await axios.post(`${API_URL}/auth/register`, { email });
             toast.success('Verification link sent to your email! 📧');
             // Optional: navigate to a "check email" page or stay here
         } catch (error) {
