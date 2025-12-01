@@ -179,7 +179,10 @@ export const register = async (req, res) => {
         });
 
         if (!emailResult.success) {
-            return res.status(500).json({ message: 'Failed to send verification email' });
+            return res.status(500).json({
+                message: `Failed to send verification email: ${emailResult.error}`,
+                error: emailResult.error
+            });
         }
 
         res.status(200).json({
@@ -189,7 +192,7 @@ export const register = async (req, res) => {
 
     } catch (error) {
         console.error('Registration error:', error);
-        res.status(500).json({ message: 'Server error during registration' });
+        res.status(500).json({ message: `Server error during registration: ${error.message}`, error: error.message });
     }
 };
 
@@ -273,6 +276,9 @@ export const login = async (req, res) => {
         }
 
         // Check password
+        if (!user.password) {
+            return res.status(500).json({ message: 'User data corrupted: No password set' });
+        }
         const isPasswordValid = await user.comparePassword(password);
 
         if (!isPasswordValid) {
@@ -295,7 +301,7 @@ export const login = async (req, res) => {
 
     } catch (error) {
         console.error('Login error:', error);
-        res.status(500).json({ message: 'Server error during login' });
+        res.status(500).json({ message: `Server error: ${error.message}`, error: error.message });
     }
 };
 

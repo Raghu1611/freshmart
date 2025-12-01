@@ -3,8 +3,8 @@ node_modules/
 backend/node_modules/
 
 # Environment variables
-# Environment variables
 .env
+backend/.env
 backend/.env.local
 .env.local
 .env.production
@@ -18,6 +18,7 @@ build/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+logs/
 
 # Editor directories
 .vscode/
@@ -31,3 +32,27 @@ Thumbs.db
 
 # Testing
 coverage/
+
+# Docker files (not needed for Render/Vercel deployment)
+Dockerfile
+docker-compose.yml
+.dockerignore
+nginx.conf
+
+# Test and debug files
+test-*.js
+debug-*.js
+*-output.txt
+check-env.js
+force-start.js
+
+# Frontend build scripts (not needed in production)
+debug_script.js
+finish_structure.js
+finish_structure_debug.js
+refactor_structure.js
+update_imports.js
+
+# Git helper scripts
+*.bat
+git_*.txt

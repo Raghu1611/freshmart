@@ -13,3 +13,22 @@ Untracked files:
 nothing added to commit but untracked files present (use "git add" to track)
  
 --- GIT ADD --- 
+warning: in the working copy of 'git_log.txt', LF will be replaced by CRLF the next time Git touches it
+ 
+--- GIT COMMIT --- 
+[main 7539a8f] Fix Vercel deployment config and server startup
+ 2 files changed, 31 insertions(+)
+ create mode 100644 commit_push.bat
+ create mode 100644 git_log.txt
+ 
+--- GIT PUSH --- 
+To https://github.com/Raghu1611/freshmart.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/Raghu1611/freshmart.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+ 
+DONE 
