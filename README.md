@@ -105,14 +105,13 @@ npm run dev
 
 ---
 
-## 🔑 Default Admin Credentials
-To access the Admin Dashboard, use the following credentials (seeded automatically):
-- **Email:** `admin@freshmart.com`
-- **Password:** `admin123`
 
----
 
-## 📸 Screenshots
+
+
+
+
+
 
 | **Home Page** | **Dark Mode** |
 |:---:|:---:|
