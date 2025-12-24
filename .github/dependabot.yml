@@ -1,49 +1,48 @@
+# Dependabot configuration file.
+# To use this:
+# 1. Create a folder named ".github" in the root of your repository.
+# 2. Inside that folder, create a file named "dependabot.yml".
+# 3. Paste this content into that file.
+# 4. Commit and push.
+
+
 version: 2
 updates:
-  # Enable version updates for npm
+  # Maintain JavaScript/Node/React dependencies (checks package.json)
   - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "daily"
+      time: "09:00" # UTC time to check
+    # Check for security updates and non-breaking version bumps
+    open-pull-requests-limit: 5
+    reviewers:
+      - "DHANUNJAI" # Optional: Replace with your GitHub username to auto-request review
+    commit-message:
+      prefix: "fix"
+      prefix-development: "chore"
+
+
+  # Maintain Java/Spring Boot dependencies (checks pom.xml)
+  - package-ecosystem: "maven"
     directory: "/"
     schedule:
       interval: "daily"
       time: "09:00"
-      timezone: "Asia/Kolkata"
-    commit-message:
-      prefix: "chore"
-      include: "scope"
-    pull-request-branch-name:
-      separator: "/"
+    open-pull-requests-limit: 5
 
-  # Enable version updates for npm in backend (if exists)
-  - package-ecosystem: "npm"
-    directory: "/backend"
+
+  # Maintain Gradle projects (checks build.gradle)
+  - package-ecosystem: "gradle"
+    directory: "/"
     schedule:
       interval: "daily"
-      time: "09:15"
-      timezone: "Asia/Kolkata"
-    commit-message:
-      prefix: "chore"
-      include: "scope"
-    pull-request-branch-name:
-      separator: "/"
+      time: "09:00"
+    open-pull-requests-limit: 5
 
-  # Enable version updates for npm in frontend (if exists)
-  - package-ecosystem: "npm"
-    directory: "/frontend"
-    schedule:
-      interval: "daily"
-      time: "09:30"
-      timezone: "Asia/Kolkata"
-    commit-message:
-      prefix: "chore"
-      include: "scope"
-    pull-request-branch-name:
-      separator: "/"
 
-  # Enable version updates for GitHub Actions
+  # Maintain GitHub Actions workflows themselves
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "weekly"
-      day: "monday"
-      time: "10:00"
-      timezone: "Asia/Kolkata"
